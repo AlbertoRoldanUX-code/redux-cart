@@ -4,7 +4,7 @@ import { cartActions } from '../../store/cart-slice';
 import { useDispatch } from 'react-redux';
 
 const ProductItem = (props) => {
-  const { title, price, description } = props;
+  const { id, title, price, description } = props;
   const dispatch = useDispatch();
 
   function onAddHandler() {
@@ -12,6 +12,7 @@ const ProductItem = (props) => {
       title: title,
       price: price,
       amount: 1,
+      id: id,
     };
 
     dispatch(cartActions.add(product));
