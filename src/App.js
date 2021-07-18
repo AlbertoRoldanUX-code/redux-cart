@@ -6,6 +6,8 @@ function App() {
   return (
     <Layout>
       <Cart />
+
+      
       <Products />
     </Layout>
   );
