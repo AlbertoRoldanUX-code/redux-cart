@@ -10,6 +10,8 @@ const CartButton = (props) => {
     dispatch(uiSliceActions.toggle());
   };
 
+  console.log(cart.totalQuantity);
+
   return (
     <button className={classes.button} onClick={onToggleHandler}>
       <span>My Cart</span>

@@ -24,8 +24,37 @@ export const cartSlice = createSlice({
         existingItem.totalPrice =
           existingItem.totalPrice + action.payload.price;
       }
+      state.totalQuantity++;
     },
-    remove(state, action) {},
+
+    increase(state, action) {
+      const existingCartItemIndex = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      const existingItem = state.items[existingCartItemIndex];
+      existingItem.quantity++;
+      state.totalQuantity++;
+    },
+
+    decrease(state, action) {
+      const existingCartItemIndex = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      const existingItem = state.items[existingCartItemIndex];
+
+      existingItem.quantity--;
+      state.totalQuantity--;
+    },
+
+    remove(state, action) {
+      const existingItem = state.items.find(
+        (item) => item.id === action.payload
+      );
+      if (existingItem.quantity === 1) {
+        state.items.pop(existingItem);
+      }
+      state.totalQuantity--;
+    },
   },
 });
 
