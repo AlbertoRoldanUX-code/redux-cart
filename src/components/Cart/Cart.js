@@ -19,6 +19,7 @@ const Cart = (props) => {
               price: item.price,
               id: index,
             }}
+            key={index}
           />
         ))}
       </ul>
