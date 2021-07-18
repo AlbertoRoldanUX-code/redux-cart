@@ -11,9 +11,8 @@ const ProductItem = (props) => {
     const product = {
       title: title,
       price: price,
-      description: description,
+      amount: 1,
     };
-    console.log(product);
 
     dispatch(cartActions.add(product));
   }
