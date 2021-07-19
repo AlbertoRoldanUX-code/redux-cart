@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 const Cart = (props) => {
   const cart = useSelector((state) => state.cart);
 
-  console.log(cart.items);
   return (
     <Card className={classes.cart}>
       <h2>Your Shopping Cart</h2>

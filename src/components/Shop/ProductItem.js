@@ -7,14 +7,12 @@ const ProductItem = (props) => {
   const { id, title, price, description } = props;
   const dispatch = useDispatch();
 
+  const product = {
+    title: title,
+    price: price,
+    id: id,
+  };
   function onAddHandler() {
-    const product = {
-      title: title,
-      price: price,
-      amount: 1,
-      id: id,
-    };
-
     dispatch(cartActions.add(product));
   }
 

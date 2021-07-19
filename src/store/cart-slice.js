@@ -28,29 +28,27 @@ export const cartSlice = createSlice({
     },
 
     increase(state, action) {
-      const existingCartItemIndex = state.items.findIndex(
+      const existingItem = state.items.find(
         (item) => item.id === action.payload
       );
-      console.log(action.payload);
-      const existingItem = state.items[existingCartItemIndex];
       existingItem.quantity++;
       existingItem.totalPrice = existingItem.totalPrice + existingItem.price;
       state.totalQuantity++;
     },
 
     decrease(state, action) {
-      const existingCartItemIndex = state.items.findIndex(
+      const existingItem = state.items.find(
         (item) => item.id === action.payload
       );
-      const existingItem = state.items[existingCartItemIndex];
 
       if (existingItem.quantity === 1) {
-        state.items.pop(existingItem);
+        state.items = state.items.filter((item) => item.id !== action.payload);
       }
+
+      existingItem.quantity--;
 
       existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
 
-      existingItem.quantity--;
       state.totalQuantity--;
     },
   },
