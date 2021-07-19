@@ -38,5 +38,6 @@ export default App;
 //////////// 4º If clicking the + and - buttons in the cart, increase or decrease the quantity.
 //////////// 5º If the quantity is 1 and we click on -, we remove the item entirely from the cart.
 //////////// 6º Display the cart dynamically.
-// 7º Update cart on the backend whenever the cart changes (add or remove items).
+//////////// 7º Update cart on the backend whenever the cart changes (add or remove items).
 // 8º When realoading, fetch that data from the server, load it and display it.
+// 9º Handle errors.

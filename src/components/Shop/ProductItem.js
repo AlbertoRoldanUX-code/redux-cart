@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 
 const ProductItem = (props) => {
   const { id, title, price, description } = props;
+
   const dispatch = useDispatch();
 
   const product = {
