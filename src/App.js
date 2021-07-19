@@ -5,8 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { Fragment } from 'react';
 import Notification from './components/UI/Notification';
-import { sendCartData } from './store/cart-slice';
+import { sendCartData, fetchCartData } from './store/cart-slice';
 
+let isInitial = true;
 function App() {
   const ui = useSelector((state) => state.ui);
   const cart = useSelector((state) => state.cart);
@@ -14,7 +15,16 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (cart.items.length > 0) {
+    dispatch(fetchCartData());
+  }, [dispatch]);
+
+  console.log(cart.items);
+  useEffect(() => {
+    if (isInitial) {
+      isInitial = false;
+      return;
+    }
+    if (cart.changed) {
       dispatch(sendCartData(cart));
     }
   }, [dispatch, cart]);
@@ -48,4 +58,4 @@ export default App;
 //////////// 7º Update cart on the backend whenever the cart changes (add or remove items).
 //////////// 8º Display notifications when adding products to the cart.
 //////////// 9º Move sending cart data code into an action creator.
-// 10º Fetch the cart data from the server.
+//////////// 10º Build action creator that fetches the cart when app loads.
